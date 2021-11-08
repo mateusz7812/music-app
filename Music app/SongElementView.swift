@@ -14,14 +14,15 @@ struct SongElementView: View {
 
     var body: some View {
         HStack{
-            Image(systemName: "forward.fill")
+            Image("sample")
+                .resizable()
+                .frame(width: 35, height: 35)
             VStack{
                 Text(name)
                 Text(author)
             }
             Spacer()
             Text(duration)
-            Image(systemName: "forward.fill")
         }
     }
 }

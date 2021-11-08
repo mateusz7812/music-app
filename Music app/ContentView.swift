@@ -10,17 +10,21 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack{
-            NavigationLink(destination: PlaylistsView(playlists: Playlist.data)){
-                SectionButtonView(text: "Playlists")
-            }
-            NavigationLink(destination: AlbumsView()){
-                SectionButtonView(text: "Albums")
-            }
-            NavigationLink(destination: SongsView(songs: Song.data)){
-                SectionButtonView(text: "Songs")
+            List{
+                NavigationLink(destination: PlaylistsView(playlists: Playlist.data)){
+                    SectionButtonView(text: "Playlists")
+                }
+                NavigationLink(destination: AlbumsView(albums: Album.data)){
+                    SectionButtonView(text: "Albums")
+                }
+                NavigationLink(destination: SongsView(songs: Song.data)){
+                    SectionButtonView(text: "Songs")
+                }
             }
             Spacer()
-            Image(systemName: "forward.fill")
+            Image("sample")
+                .resizable()
+                .scaledToFit()
             Spacer()
             PlayerBarView()
         }

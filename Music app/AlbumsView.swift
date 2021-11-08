@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct AlbumsView: View {
+    let albums: [Album]
     var body: some View {
         VStack{
+            List{
+                ForEach(albums, id: \.name){ album in
+                    AlbumElementView(name: album.name, authors: album.authors)
+                }
+            }
             Spacer()
             PlayerBarView()
             
@@ -20,6 +26,6 @@ struct AlbumsView: View {
 
 struct AlbumsView_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumsView()
+        AlbumsView(albums: Album.data)
     }
 }

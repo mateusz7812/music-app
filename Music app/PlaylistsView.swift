@@ -13,7 +13,9 @@ struct PlaylistsView: View {
         VStack{
             List{
                 ForEach(playlists, id: \.name){ playlist in
-                    PlaylistElementView(playlist: playlist)
+                    NavigationLink(destination: PlaylistView(songs: Song.data, name: "playlist1")){
+                        PlaylistElementView(playlist: playlist)
+                    }
                 }
             }
             Spacer()

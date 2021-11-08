@@ -12,10 +12,11 @@ struct PlaylistElementView: View {
     
     var body: some View {
         HStack{
-            Image(systemName: "forward.fill")
+            Image("sample")
+                .resizable()
+                .frame(width: 35, height: 35)
             Text(playlist.name)
             Spacer()
-            Image(systemName: "forward.fill")
         }
     }
 }

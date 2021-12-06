@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    var dbCon = DBCon()
     var body: some View {
         VStack{
             List{
@@ -30,6 +31,9 @@ struct ContentView: View {
         }
         .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(hue: 1.0, saturation: 1.0, brightness: 0.001, opacity: 0.121)/*@END_MENU_TOKEN@*/)
         .navigationTitle("Menu")
+        .onAppear(perform: {
+            dbCon.addPlaylist(playlist: Playlist.data[0])
+        })
     }
 }
 

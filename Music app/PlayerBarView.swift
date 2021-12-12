@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct PlayerBarView: View {
-    @State private var showingSheet = false;
+    @ObservedObject var player: Player
+    @State private var showingSheet = false
     var body: some View {
         HStack{
             Image("sample")
@@ -20,11 +22,25 @@ struct PlayerBarView: View {
                 Text("author")
             }
             Spacer()
-            Button(action: {}){
-                Image(systemName: "play.fill")
-                    .resizable()
-                    .frame(width: 17, height: 17, alignment: Alignment.center)
+            
+            if (!$player.isPlaying.wrappedValue) {
+                Button(action: {
+                    self.player.play()
+                }){
+                    Image(systemName: "play.fill")
+                        .resizable()
+                        .frame(width: 17, height: 17, alignment: Alignment.center)
+                }
+            } else {
+                Button(action: {
+                    self.player.pause()
+                }){
+                    Image(systemName: "pause.fill")
+                        .resizable()
+                        .frame(width: 17, height: 17, alignment: Alignment.center)
+                }
             }
+            
             Button(action: {}){
                 Image(systemName: "forward.fill")
                     .resizable()
@@ -37,13 +53,13 @@ struct PlayerBarView: View {
         })
         .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.white/*@END_MENU_TOKEN@*/)
         .sheet(isPresented: $showingSheet){
-            Player(sliderValue: Binding.constant(10), song: Song.data[0])
+            PlayerView(player: self.player, song: Song.data[0])
         }
     }
 }
 
 struct PlayerBarView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerBarView()
+        PlayerBarView(player: Player())
     }
 }

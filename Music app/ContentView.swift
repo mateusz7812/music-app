@@ -6,33 +6,34 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct ContentView: View {
-    var dbCon = DBCon()
+    var dbCon: DBCon
+    @Binding var player: Player
     var body: some View {
         VStack{
             List{
-                NavigationLink(destination: PlaylistsView(playlists: Playlist.data)){
-                    SectionButtonView(text: "Playlists")
+                NavigationLink(destination: PlaylistsView(player: self.$player, playlists: dbCon.getPlaylists())){
+                    Text("Playlists")
                 }
-                NavigationLink(destination: AlbumsView(albums: Album.data)){
-                    SectionButtonView(text: "Albums")
+                NavigationLink(destination: AlbumsView(player: self.$player, albums: Album.data)){
+                    Text("Albums")
                 }
-                NavigationLink(destination: SongsView(songs: Song.data)){
-                    SectionButtonView(text: "Songs")
+                NavigationLink(destination: SongsView(player: self.$player, songs: Song.data)){
+                    Text("Songs")
                 }
             }
-            Spacer()
             Image("sample")
                 .resizable()
                 .scaledToFit()
-            Spacer()
-            PlayerBarView()
+            PlayerBarView(player: self.player)
         }
-        .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(hue: 1.0, saturation: 1.0, brightness: 0.001, opacity: 0.121)/*@END_MENU_TOKEN@*/)
+        .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(hue: 1.0, saturation: 1.0, brightness: 0.001, opacity: 0.105)/*@END_MENU_TOKEN@*/)
         .navigationTitle("Menu")
         .onAppear(perform: {
-            dbCon.addPlaylist(playlist: Playlist.data[0])
+            //print("player: \(player!.isPlaying)")
+            //dbCon.addPlaylist(playlist: Playlist.data[0])
         })
     }
 }
@@ -40,7 +41,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            ContentView()
+            ContentView(dbCon: DBCon(), player: Binding.constant(Player()))
         }
     }
 }

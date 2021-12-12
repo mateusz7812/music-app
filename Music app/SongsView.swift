@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct SongsView: View {
+    @Binding var player: Player
     var songs: [Song]
     var body: some View {
         VStack{
@@ -17,7 +19,7 @@ struct SongsView: View {
                 }
             }
             Spacer()
-            PlayerBarView()
+            PlayerBarView(player: self.player)
         }.background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.gray/*@END_MENU_TOKEN@*/)
         .navigationTitle("Songs")
     }
@@ -25,6 +27,6 @@ struct SongsView: View {
 
 struct SongsView_Previews: PreviewProvider {
     static var previews: some View {
-        SongsView(songs: Song.data)
+        SongsView(player: Binding.constant(Player()), songs: Song.data)
     }
 }

@@ -3,14 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A10EB5EF274BF1F800300844 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10EB5D3274BF02400300844 /* SQLite.framework */; };
-		A10EB5F0274BF1F800300844 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A10EB5D3274BF02400300844 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A111BCD7273970F4009B9933 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A111BCD6273970F4009B9933 /* Player.swift */; };
-		A111BCEF27398345009B9933 /* sample4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A111BCEE27398345009B9933 /* sample4.mp3 */; };
+		9A1A835327665135009CB52C /* HalfASheet in Frameworks */ = {isa = PBXBuildFile; productRef = 9A1A835227665135009CB52C /* HalfASheet */; };
+		9A1A835E2766921B009CB52C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A835D2766921B009CB52C /* Player.swift */; };
+		9A33C93C276541C300F673E4 /* sample4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A33C93B276541C300F673E4 /* sample4.mp3 */; };
+		9A33C949276542EA00F673E4 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 9A33C948276542EA00F673E4 /* SQLite */; };
+		A111BCD7273970F4009B9933 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A111BCD6273970F4009B9933 /* PlayerView.swift */; };
 		A111BCF4273987EE009B9933 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = A111BCF3273987EE009B9933 /* Album.swift */; };
 		A111BCF92739887F009B9933 /* AlbumElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A111BCF82739887F009B9933 /* AlbumElementView.swift */; };
 		A17E5ECD2726EC3500C12270 /* Music_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E5ECC2726EC3500C12270 /* Music_appApp.swift */; };
@@ -20,7 +21,6 @@
 		A17E5EDF2726EC4200C12270 /* Music_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E5EDE2726EC4200C12270 /* Music_appTests.swift */; };
 		A17E5EEA2726EC4200C12270 /* Music_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E5EE92726EC4200C12270 /* Music_appUITests.swift */; };
 		A17E5EFB2726F79900C12270 /* PlayerBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E5EFA2726F79900C12270 /* PlayerBarView.swift */; };
-		A17E5F002726F8B900C12270 /* SectionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E5EFF2726F8B900C12270 /* SectionButtonView.swift */; };
 		A17E5F052726FDB400C12270 /* PlaylistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E5F042726FDB400C12270 /* PlaylistsView.swift */; };
 		A17E5F0A2726FF4000C12270 /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E5F092726FF4000C12270 /* AlbumsView.swift */; };
 		A17E5F0F2726FF5800C12270 /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E5F0E2726FF5800C12270 /* SongsView.swift */; };
@@ -34,55 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A10EB5D2274BF02400300844 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A10EB5C8274BF02400300844 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EE247AD31C3F04ED00AE3E12;
-			remoteInfo = "SQLite iOS";
-		};
-		A10EB5D4274BF02400300844 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A10EB5C8274BF02400300844 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EE247ADD1C3F04ED00AE3E12;
-			remoteInfo = "SQLiteTests iOS";
-		};
-		A10EB5D6274BF02400300844 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A10EB5C8274BF02400300844 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EE247B3C1C3F3ED000AE3E12;
-			remoteInfo = "SQLite Mac";
-		};
-		A10EB5D8274BF02400300844 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A10EB5C8274BF02400300844 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EE247B451C3F3ED000AE3E12;
-			remoteInfo = "SQLiteTests Mac";
-		};
-		A10EB5DA274BF02400300844 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A10EB5C8274BF02400300844 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 03A65E5A1C6BB0F50062603F;
-			remoteInfo = "SQLite tvOS";
-		};
-		A10EB5DC274BF02400300844 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A10EB5C8274BF02400300844 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 03A65E631C6BB0F60062603F;
-			remoteInfo = "SQLiteTests tvOS";
-		};
-		A10EB5DE274BF02400300844 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A10EB5C8274BF02400300844 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A121AC451CA35C79005A31D1;
-			remoteInfo = "SQLite watchOS";
-		};
 		A17E5EDB2726EC4200C12270 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A17E5EC12726EC3500C12270 /* Project object */;
@@ -99,24 +50,11 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		A10EB5F1274BF1F800300844 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A10EB5F0274BF1F800300844 /* SQLite.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		A10EB5C8274BF02400300844 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../../../Downloads/SQLite-2.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
-		A111BCD6273970F4009B9933 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		A111BCEE27398345009B9933 /* sample4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sample4.mp3; path = ../../../../Downloads/sample4.mp3; sourceTree = "<group>"; };
+		9A1A835D2766921B009CB52C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		9A33C93B276541C300F673E4 /* sample4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sample4.mp3; sourceTree = "<group>"; };
+		9A33C944276542CA00F673E4 /* SQLite.swift-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "SQLite.swift-master"; path = "../../Downloads/SQLite.swift-master"; sourceTree = "<group>"; };
+		A111BCD6273970F4009B9933 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		A111BCF3273987EE009B9933 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		A111BCF82739887F009B9933 /* AlbumElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumElementView.swift; sourceTree = "<group>"; };
 		A17E5EC92726EC3500C12270 /* Music app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +70,6 @@
 		A17E5EE92726EC4200C12270 /* Music_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music_appUITests.swift; sourceTree = "<group>"; };
 		A17E5EEB2726EC4200C12270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A17E5EFA2726F79900C12270 /* PlayerBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBarView.swift; sourceTree = "<group>"; };
-		A17E5EFF2726F8B900C12270 /* SectionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionButtonView.swift; sourceTree = "<group>"; };
 		A17E5F042726FDB400C12270 /* PlaylistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsView.swift; sourceTree = "<group>"; };
 		A17E5F092726FF4000C12270 /* AlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
 		A17E5F0E2726FF5800C12270 /* SongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
@@ -150,7 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A10EB5EF274BF1F800300844 /* SQLite.framework in Frameworks */,
+				9A33C949276542EA00F673E4 /* SQLite in Frameworks */,
+				9A1A835327665135009CB52C /* HalfASheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,23 +109,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A10EB5C9274BF02400300844 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A10EB5D3274BF02400300844 /* SQLite.framework */,
-				A10EB5D5274BF02400300844 /* SQLiteTests iOS.xctest */,
-				A10EB5D7274BF02400300844 /* SQLite.framework */,
-				A10EB5D9274BF02400300844 /* SQLiteTests Mac.xctest */,
-				A10EB5DB274BF02400300844 /* SQLite.framework */,
-				A10EB5DD274BF02400300844 /* SQLiteTests tvOS.xctest */,
-				A10EB5DF274BF02400300844 /* SQLite.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		A10EB5E3274BF07A00300844 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A33C944276542CA00F673E4 /* SQLite.swift-master */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -195,7 +120,6 @@
 		A17E5EC02726EC3500C12270 = {
 			isa = PBXGroup;
 			children = (
-				A10EB5C8274BF02400300844 /* SQLite.xcodeproj */,
 				A17E5ECB2726EC3500C12270 /* Music app */,
 				A17E5EDD2726EC4200C12270 /* Music appTests */,
 				A17E5EE82726EC4200C12270 /* Music appUITests */,
@@ -223,7 +147,6 @@
 				A17E5ED52726EC4200C12270 /* Info.plist */,
 				A17E5ED22726EC4100C12270 /* Preview Content */,
 				A17E5EFA2726F79900C12270 /* PlayerBarView.swift */,
-				A17E5EFF2726F8B900C12270 /* SectionButtonView.swift */,
 				A17E5F042726FDB400C12270 /* PlaylistsView.swift */,
 				A17E5F092726FF4000C12270 /* AlbumsView.swift */,
 				A17E5F0E2726FF5800C12270 /* SongsView.swift */,
@@ -233,11 +156,12 @@
 				A17E5F2D27270C4E00C12270 /* PlaylistElementView.swift */,
 				A17E5F3227270DF100C12270 /* Playlist.swift */,
 				A1C85E7C274BE6CF005D6912 /* DBCon.swift */,
-				A111BCEE27398345009B9933 /* sample4.mp3 */,
+				9A33C93B276541C300F673E4 /* sample4.mp3 */,
 				A17E5F372727122100C12270 /* PlaylistView.swift */,
-				A111BCD6273970F4009B9933 /* Player.swift */,
+				A111BCD6273970F4009B9933 /* PlayerView.swift */,
 				A111BCF3273987EE009B9933 /* Album.swift */,
 				A111BCF82739887F009B9933 /* AlbumElementView.swift */,
+				9A1A835D2766921B009CB52C /* Player.swift */,
 			);
 			path = "Music app";
 			sourceTree = "<group>";
@@ -278,13 +202,16 @@
 				A17E5EC52726EC3500C12270 /* Sources */,
 				A17E5EC62726EC3500C12270 /* Frameworks */,
 				A17E5EC72726EC3500C12270 /* Resources */,
-				A10EB5F1274BF1F800300844 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Music app";
+			packageProductDependencies = (
+				9A33C948276542EA00F673E4 /* SQLite */,
+				9A1A835227665135009CB52C /* HalfASheet */,
+			);
 			productName = "Music app";
 			productReference = A17E5EC92726EC3500C12270 /* Music app.app */;
 			productType = "com.apple.product-type.application";
@@ -356,14 +283,12 @@
 				Base,
 			);
 			mainGroup = A17E5EC02726EC3500C12270;
+			packageReferences = (
+				9A1A834B276647FE009CB52C /* XCRemoteSwiftPackageReference "PartialSheet" */,
+				9A1A835127665135009CB52C /* XCRemoteSwiftPackageReference "HalfASheet" */,
+			);
 			productRefGroup = A17E5ECA2726EC3500C12270 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = A10EB5C9274BF02400300844 /* Products */;
-					ProjectRef = A10EB5C8274BF02400300844 /* SQLite.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				A17E5EC82726EC3500C12270 /* Music app */,
@@ -373,58 +298,6 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		A10EB5D3274BF02400300844 /* SQLite.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SQLite.framework;
-			remoteRef = A10EB5D2274BF02400300844 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A10EB5D5274BF02400300844 /* SQLiteTests iOS.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SQLiteTests iOS.xctest";
-			remoteRef = A10EB5D4274BF02400300844 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A10EB5D7274BF02400300844 /* SQLite.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SQLite.framework;
-			remoteRef = A10EB5D6274BF02400300844 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A10EB5D9274BF02400300844 /* SQLiteTests Mac.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SQLiteTests Mac.xctest";
-			remoteRef = A10EB5D8274BF02400300844 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A10EB5DB274BF02400300844 /* SQLite.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SQLite.framework;
-			remoteRef = A10EB5DA274BF02400300844 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A10EB5DD274BF02400300844 /* SQLiteTests tvOS.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SQLiteTests tvOS.xctest";
-			remoteRef = A10EB5DC274BF02400300844 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A10EB5DF274BF02400300844 /* SQLite.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SQLite.framework;
-			remoteRef = A10EB5DE274BF02400300844 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		A17E5EC72726EC3500C12270 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
@@ -432,7 +305,7 @@
 			files = (
 				A17E5ED42726EC4100C12270 /* Preview Assets.xcassets in Resources */,
 				A17E5ED12726EC4100C12270 /* Assets.xcassets in Resources */,
-				A111BCEF27398345009B9933 /* sample4.mp3 in Resources */,
+				9A33C93C276541C300F673E4 /* sample4.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,7 +335,7 @@
 				A17E5F0F2726FF5800C12270 /* SongsView.swift in Sources */,
 				A17E5F052726FDB400C12270 /* PlaylistsView.swift in Sources */,
 				A17E5ECF2726EC3500C12270 /* ContentView.swift in Sources */,
-				A111BCD7273970F4009B9933 /* Player.swift in Sources */,
+				A111BCD7273970F4009B9933 /* PlayerView.swift in Sources */,
 				A17E5F14272703D000C12270 /* SongElementView.swift in Sources */,
 				A17E5F2E27270C4E00C12270 /* PlaylistElementView.swift in Sources */,
 				A111BCF92739887F009B9933 /* AlbumElementView.swift in Sources */,
@@ -470,9 +343,9 @@
 				A17E5F1E272706A500C12270 /* Duration.swift in Sources */,
 				A17E5F0A2726FF4000C12270 /* AlbumsView.swift in Sources */,
 				A17E5EFB2726F79900C12270 /* PlayerBarView.swift in Sources */,
-				A17E5F002726F8B900C12270 /* SectionButtonView.swift in Sources */,
 				A17E5ECD2726EC3500C12270 /* Music_appApp.swift in Sources */,
 				A17E5F3327270DF100C12270 /* Playlist.swift in Sources */,
+				9A1A835E2766921B009CB52C /* Player.swift in Sources */,
 				A111BCF4273987EE009B9933 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -632,6 +505,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Music app/Preview Content\"";
+				DEVELOPMENT_TEAM = UAB6YYMAF5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Music app/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -653,6 +527,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Music app/Preview Content\"";
+				DEVELOPMENT_TEAM = UAB6YYMAF5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Music app/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -787,6 +662,37 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9A1A834B276647FE009CB52C /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.14;
+			};
+		};
+		9A1A835127665135009CB52C /* XCRemoteSwiftPackageReference "HalfASheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/franklynw/HalfASheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9A1A835227665135009CB52C /* HalfASheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A1A835127665135009CB52C /* XCRemoteSwiftPackageReference "HalfASheet" */;
+			productName = HalfASheet;
+		};
+		9A33C948276542EA00F673E4 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A17E5EC12726EC3500C12270 /* Project object */;
 }

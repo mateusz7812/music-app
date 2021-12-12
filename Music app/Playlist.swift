@@ -8,6 +8,7 @@
 import Foundation
 
 struct Playlist {
+    var id: Int?
     var name: String
 }
 

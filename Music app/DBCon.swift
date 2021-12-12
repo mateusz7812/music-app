@@ -32,6 +32,7 @@ class DBCon {
     let albumsTable = Table("albums")
     let albumId = Expression<Int64>("id")
     let albumName = Expression<String>("name")
+    let authorsName = Expression<String>("authors")
     
     func getConnection() throws -> Connection {
         let path = NSSearchPathForDirectoriesInDomains(
@@ -43,7 +44,14 @@ class DBCon {
     }
     
     func createTables() -> Void {
-        
+        let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        let destinationPath = documents + "/db.sqlite3"
+        let exists = FileManager.default.fileExists(atPath: destinationPath)
+        guard !exists else
+        {
+            print("db already exist")
+            return
+        }
         do {
             let db = try getConnection()
 
@@ -56,7 +64,8 @@ class DBCon {
             })
             
             try db.run(playlistsTable.create { t in
-                t.column(playlistName, primaryKey: true)
+                t.column(playlistId, primaryKey: true)
+                t.column(playlistName)
             })
             
             try db.run(playlistSongsTable.create { t in
@@ -71,7 +80,7 @@ class DBCon {
             })
             
         } catch {
-            print ("!!!!!!!!!!!!!!!!!!")
+            print ("!!!!!!!!!!!!!!!!!!\ncatched")
             print (error)
         }
     }
@@ -101,14 +110,56 @@ class DBCon {
     func addPlaylist(playlist: Playlist) {
         do {
             let db = try getConnection()
-            let insert = playlistsTable.insert(playlistName <- "playlistName")
-            let rowId = try db.run(insert)
+            let insert = playlistsTable.insert(playlistName <- playlist.name)
+            /*let rowId = */try db.run(insert)
+            //print("id: \(rowId)")
+            //let playlist = playlistsTable.filter(playlistId == rowId)
+            //for x in try db.prepare(playlist.select(playlistName)){
+            //    print("test: \(try x.get(playlistName))")
+            //}
+            //for p in try db.prepare(playlistsTable){
+            //    print("id: \(try p.get(playlistId))name: \(try p.get(playlistName))")
+            //}
         } catch {
             print("insert failed: \(error)")
         }
     }
     
-    //analogicznie
+    func getPlaylists() -> [Playlist]{
+        do {
+            var playlists: [Playlist] = []
+            let db = try getConnection()
+            for p in try db.prepare(playlistsTable){
+                playlists.append(Playlist(id: Int(truncatingIfNeeded: try p.get(playlistId)), name: try p.get(playlistName)))
+            }
+            return playlists
+        } catch {
+            print("getPlaylistsError")
+            return []
+        }
+    }
     
+    func addAlbum(album: Album){
+        do {
+            let db = try getConnection()
+            let insert = albumsTable.insert(albumName <- album.name)
+            try db.run(insert)
+        } catch {
+            print("insert failed: \(error)")
+        }
+    }
     
+    func getAlbums() -> [Album]{
+        do {
+            var albums: [Album] = []
+            let db = try getConnection()
+            for p in try db.prepare(albumsTable){
+                albums.append(Album(id: Int(truncatingIfNeeded: try p.get(albumId)), name: try p.get(albumName), authors: try p.get(authorsName)))
+            }
+            return albums
+        } catch {
+            print("getAlbumsError")
+            return []
+        }
+    }
 }

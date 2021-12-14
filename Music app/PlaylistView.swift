@@ -16,7 +16,7 @@ struct PlaylistView: View {
         VStack{
             List{
                 ForEach(songs, id: \.name){ song in
-                    SongElementView(name: song.name, author: song.author, duration: song.duration.to_String())
+                    SongElementView(name: song.name, author: song.author, duration: Duration.from(song.duration).toString)
                 }
             }
             Spacer()

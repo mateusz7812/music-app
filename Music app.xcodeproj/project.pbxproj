@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A02C2182768BAF300705026 /* FilePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A02C2172768BAF300705026 /* FilePicker.swift */; };
+		9A02C21D2768BBE700705026 /* DocumentPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A02C21C2768BBE700705026 /* DocumentPickerViewController.swift */; };
 		9A1A835327665135009CB52C /* HalfASheet in Frameworks */ = {isa = PBXBuildFile; productRef = 9A1A835227665135009CB52C /* HalfASheet */; };
 		9A1A835E2766921B009CB52C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A835D2766921B009CB52C /* Player.swift */; };
 		9A33C93C276541C300F673E4 /* sample4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A33C93B276541C300F673E4 /* sample4.mp3 */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A02C2172768BAF300705026 /* FilePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePicker.swift; sourceTree = "<group>"; };
+		9A02C21C2768BBE700705026 /* DocumentPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerViewController.swift; sourceTree = "<group>"; };
 		9A1A835D2766921B009CB52C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		9A33C93B276541C300F673E4 /* sample4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sample4.mp3; sourceTree = "<group>"; };
 		9A33C944276542CA00F673E4 /* SQLite.swift-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "SQLite.swift-master"; path = "../../Downloads/SQLite.swift-master"; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 		A17E5EC02726EC3500C12270 = {
 			isa = PBXGroup;
 			children = (
+				9A02C21C2768BBE700705026 /* DocumentPickerViewController.swift */,
 				A17E5ECB2726EC3500C12270 /* Music app */,
 				A17E5EDD2726EC4200C12270 /* Music appTests */,
 				A17E5EE82726EC4200C12270 /* Music appUITests */,
@@ -162,6 +167,7 @@
 				A111BCF3273987EE009B9933 /* Album.swift */,
 				A111BCF82739887F009B9933 /* AlbumElementView.swift */,
 				9A1A835D2766921B009CB52C /* Player.swift */,
+				9A02C2172768BAF300705026 /* FilePicker.swift */,
 			);
 			path = "Music app";
 			sourceTree = "<group>";
@@ -339,12 +345,14 @@
 				A17E5F14272703D000C12270 /* SongElementView.swift in Sources */,
 				A17E5F2E27270C4E00C12270 /* PlaylistElementView.swift in Sources */,
 				A111BCF92739887F009B9933 /* AlbumElementView.swift in Sources */,
+				9A02C2182768BAF300705026 /* FilePicker.swift in Sources */,
 				A17E5F382727122100C12270 /* PlaylistView.swift in Sources */,
 				A17E5F1E272706A500C12270 /* Duration.swift in Sources */,
 				A17E5F0A2726FF4000C12270 /* AlbumsView.swift in Sources */,
 				A17E5EFB2726F79900C12270 /* PlayerBarView.swift in Sources */,
 				A17E5ECD2726EC3500C12270 /* Music_appApp.swift in Sources */,
 				A17E5F3327270DF100C12270 /* Playlist.swift in Sources */,
+				9A02C21D2768BBE700705026 /* DocumentPickerViewController.swift in Sources */,
 				9A1A835E2766921B009CB52C /* Player.swift in Sources */,
 				A111BCF4273987EE009B9933 /* Album.swift in Sources */,
 			);

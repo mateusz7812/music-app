@@ -21,7 +21,7 @@ class DBCon {
     let songId = Expression<Int64>("id")
     let songName = Expression<String>("name")
     let songAuthor = Expression<String>("author")
-    let songDuration = Expression<Duration>("duration")
+    let songDuration = Expression<Int64>("duration")
     let songAlbumId = Expression<Int64>("albumId")
     
     let playlistSongsTable = Table("playlists_songs")

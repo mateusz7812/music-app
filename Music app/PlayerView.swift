@@ -27,16 +27,20 @@ struct PlayerView: View {
                 .resizable()
                 .scaledToFit()
                 .padding(10)
-            Text("Song name")
+            Text(audioPlayer.currentSong.name)
             Text("Album")
-            Text("Author")
+            Text(audioPlayer.currentSong.author)
             Spacer()
             HStack{
-                Text("1:45")
+                Text(Duration.from(Int(audioPlayer.currentTime)).toString)
                 Spacer()
-                Text("3:30")
+                Text(Duration.from(Int(audioPlayer.duration)).toString)
             }
-            Slider(value: $audioPlayer.sliderValue, in: 0...30, step: 1)
+            Slider(
+                value: Binding(get: { audioPlayer.currentTime }, set: { (newVal) in audioPlayer.set(time: newVal) }),
+                in: 0...$audioPlayer.duration.wrappedValue,
+                step: 1
+            )
             HStack{
                 Spacer()
                 Image(systemName: "backward.fill")

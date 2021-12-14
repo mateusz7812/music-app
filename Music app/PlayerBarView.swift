@@ -18,8 +18,8 @@ struct PlayerBarView: View {
                 .frame(width: 50, height: 50)
                 .padding(5)
             VStack(alignment: .leading){
-                Text("song_name")
-                Text("author")
+                Text($player.currentSong.name.wrappedValue)
+                Text($player.currentSong.author.wrappedValue)
             }
             Spacer()
             

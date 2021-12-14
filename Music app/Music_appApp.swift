@@ -22,6 +22,7 @@ struct Music_appApp: App {
             NavigationView{
                 ContentView(dbCon: db, player: Binding.constant(self.audioPlayer))
             }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }

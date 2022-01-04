@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct AlbumElementView: View {
-    var name: String
-    var authors: String
+    var album: Album
+    
     var body: some View {
         HStack{
-            Image("sample")
+            SavedImage.loadIfExists(imageName: album.artworkPath)
                 .resizable()
                 .frame(width: 35, height: 35)
             VStack(alignment: .leading){
-                Text(name)
-                Text(authors).font(.system(size: 10.0))
+                Text(album.name)
+                Text(album.authors).font(.system(size: 10.0))
             }
             Spacer()
         }
@@ -26,6 +26,6 @@ struct AlbumElementView: View {
 
 struct AlbumElementView_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumElementView(name: "Album 1", authors: "Author 1, Author 2")
+        AlbumElementView(album: Album(name: "Album 1", authors: "Author 1, Author 2"))
     }
 }

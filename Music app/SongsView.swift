@@ -15,17 +15,29 @@ struct SongsView: View {
     @State private var newSongTitle: String = "";
     @State private var newSongAuthor: String = "";
     @State private var path: String = "";
-    var songs: [Song]
+    @State var songs: [Song] = []
+    @State private var songToDelete: Song?
+    @Binding var dbCon: DBCon
     
     var body: some View {
         ZStack{
             VStack{
-                List{
-                    ForEach(songs, id: \.name){ song in
-                        SongElementView(name: song.name, author: song.author, duration: Duration.from(song.duration).toString)
+                TabView{
+                    List{
+                        ForEach(songs, id: \.name){ song in
+                            SongElementView(song: song)
+                                .onTapGesture(){
+                                    player.set(song: song)
+                                    player.play()
+                                    player.set(songs: songs)
+                                }
+                                .onLongPressGesture(){
+                                    songToDelete = song
+                                }
+                        }
                     }
                 }
-                Spacer()
+                .tabViewStyle(PageTabViewStyle())
                 PlayerBarView(player: self.player)
             }.background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.gray/*@END_MENU_TOKEN@*/)
             .navigationTitle("Songs")
@@ -34,6 +46,20 @@ struct SongsView: View {
                         showingSheet.toggle()
                     }
             }
+            .alert(item: $songToDelete, content: { song in
+                Alert(
+                    title: Text("Deleting"),
+                    message: Text("Do you want to delete \(song.name) - \(song.author)"),
+                    primaryButton: .destructive(Text("Delete"), action: {
+                        dbCon.removeSong(id: song.id!)
+                        songs.remove(at: songs.firstIndex(of: song)!)
+                    }),
+                    secondaryButton: .cancel(Text("Cancel"))
+                )
+            })
+            .onAppear(perform:{
+                songs = dbCon.getSongs()
+            })
             
             HalfASheet(isPresented: $showingSheet, title: "Add song"){
                 VStack{
@@ -47,10 +73,17 @@ struct SongsView: View {
                     .padding(.top, 10.0)
                     .listStyle(InsetGroupedListStyle())
                     Button("Add"){
-                        player.set(song: Song(name: newSongTitle, author: newSongAuthor, duration: Duration(hours: 0, minutes: 3, seconds: 0).toSeconds, path: self.path))
-                        showingSheet.toggle()
-                        newSongTitle = ""
-                        newSongAuthor = ""
+                        if(self.path != "" && newSongTitle != "" && newSongAuthor != ""){
+                            let audioAsset = AVURLAsset.init(url: URL(fileURLWithPath: self.path), options: nil)
+                            let duration = audioAsset.duration
+                            let durationInSeconds: Int = Int(CMTimeGetSeconds(duration))
+                            
+                            dbCon.addSong(song: Song(id: -1, name: newSongTitle, author: newSongAuthor, duration: durationInSeconds, path: self.path))
+                            showingSheet.toggle()
+                            newSongTitle = ""
+                            newSongAuthor = ""
+                            songs = dbCon.getSongs()
+                        }
                     }
                 }
             }
@@ -62,6 +95,6 @@ struct SongsView: View {
 
 struct SongsView_Previews: PreviewProvider {
     static var previews: some View {
-        SongsView(player: Binding.constant(Player()), songs: Song.data)
+        SongsView(player: Binding.constant(Player()), songs: Song.data, dbCon: Binding.constant(DBCon()))
     }
 }

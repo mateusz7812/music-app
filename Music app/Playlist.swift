@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Playlist {
+struct Playlist: Identifiable {
     var id: Int?
     var name: String
 }
@@ -19,5 +19,16 @@ extension Playlist{
             Playlist(name: "Playlist 2"),
             Playlist(name: "Playlist 3")
         ]
+    }
+}
+
+
+extension Playlist: Hashable{
+    static func == (lhs: Playlist, rhs: Playlist) -> Bool {
+        return lhs.id == rhs.id;
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

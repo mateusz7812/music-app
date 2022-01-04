@@ -9,21 +9,33 @@ import SwiftUI
 import HalfASheet
 
 struct PlaylistsView: View {
+    @Binding var dbCon: DBCon
     @Binding var player: Player
     @State private var showingSheet = false;
     @State private var playlistName = "";
-    @State var playlists: [Playlist]
+    @State var playlists: [Playlist] = []
+    @State private var playlistToDelete: Playlist?
+    
     var body: some View {
         ZStack{
         VStack{
-            List{
-                ForEach(playlists, id: \.name){ playlist in
-                    NavigationLink(destination: PlaylistView(player: self.$player, songs: Song.data, name: playlist.name)){
-                        PlaylistElementView(playlist: playlist)
+            TabView{
+                List{
+                    ForEach(playlists, id: \.name){ playlist in
+                        NavigationLink(destination:
+                                        PlaylistView(
+                                            dbCon: $dbCon,
+                                            player: self.$player,
+                                            playlist: playlist)){
+                            PlaylistElementView(playlist: playlist)
+                                .onLongPressGesture(){
+                                    playlistToDelete = playlist
+                                }
+                        }
                     }
                 }
             }
-            Spacer()
+            .tabViewStyle(PageTabViewStyle())
             PlayerBarView(player: self.player)
         }.background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.gray/*@END_MENU_TOKEN@*/)
         .navigationTitle("Playlists")
@@ -32,6 +44,22 @@ struct PlaylistsView: View {
                     showingSheet.toggle()
                 }
         }
+        .alert(item: $playlistToDelete, content: { playlist in
+            Alert(
+                title: Text("Deleting"),
+                message: Text("Do you want to delete \(playlist.name)?"),
+                primaryButton: .destructive(Text("Delete"), action: {
+                    dbCon.removePlaylist(id: playlist.id!)
+                    playlists.remove(at: playlists.firstIndex(of: playlist)!)
+                }),
+                secondaryButton: .cancel(Text("Cancel"))
+            )
+        })
+        .onAppear(perform: {
+            playlists = dbCon.getPlaylists()
+        })
+            
+            
         HalfASheet(isPresented: $showingSheet, title: "New playlist"){
             VStack{
                 List{
@@ -43,9 +71,10 @@ struct PlaylistsView: View {
                 .listStyle(InsetGroupedListStyle())
                 Button("Add"){
                     print("playlist \(playlistName) adding")
-                    DBCon().addPlaylist(playlist: Playlist(name:playlistName))
+                    dbCon.addPlaylist(playlist: Playlist(name:playlistName))
                     playlists = DBCon().getPlaylists()
                     showingSheet.toggle()
+                    playlistName = ""
                 }
                 Spacer()
             }
@@ -58,6 +87,6 @@ struct PlaylistsView: View {
 
 struct PlaylistsView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaylistsView(player: Binding.constant(Player()), playlists: Playlist.data)
+        PlaylistsView(dbCon: Binding.constant(DBCon()), player: Binding.constant(Player()), playlists: Playlist.data)
     }
 }

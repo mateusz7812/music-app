@@ -28,24 +28,36 @@ struct PlayerView: View {
                 .scaledToFit()
                 .padding(10)
             Text(audioPlayer.currentSong.name)
-            Text("Album")
+                .font(.system(size: 20))
+                .padding(1)
+            if(audioPlayer.currentSong.album != nil){
+                Text(audioPlayer.currentSong.album!.name)
+                    .font(.system(size: 16))
+            }
             Text(audioPlayer.currentSong.author)
+                .font(.system(size: 16))
             Spacer()
             HStack{
                 Text(Duration.from(Int(audioPlayer.currentTime)).toString)
                 Spacer()
                 Text(Duration.from(Int(audioPlayer.duration)).toString)
             }
+            .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
             Slider(
                 value: Binding(get: { audioPlayer.currentTime }, set: { (newVal) in audioPlayer.set(time: newVal) }),
                 in: 0...$audioPlayer.duration.wrappedValue,
                 step: 1
             )
+            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             HStack{
                 Spacer()
-                Image(systemName: "backward.fill")
-                    .resizable()
-                    .frame(width: 40, height: 20, alignment: Alignment.center)
+                Button(action: {
+                    self.audioPlayer.switchToLastSong()
+                }){
+                    Image(systemName: "backward.fill")
+                        .resizable()
+                        .frame(width: 40, height: 20, alignment: Alignment.center)
+                }
                 Spacer()
                 if (!$audioPlayer.isPlaying.wrappedValue) {
                     Button(action: {
@@ -65,20 +77,48 @@ struct PlayerView: View {
                     }
                 }
                 Spacer()
-                Image(systemName: "forward.fill")
-                    .resizable()
-                    .frame(width: 40, height: 20, alignment: Alignment.center)
+                Button(action: {
+                    self.audioPlayer.switchToNextSong()
+                }){
+                    Image(systemName: "forward.fill")
+                        .resizable()
+                        .frame(width: 40, height: 20, alignment: Alignment.center)
+                }
                 Spacer()
             }
             HStack{
                 Spacer()
-                Image(systemName: "shuffle")
-                    .resizable()
-                    .frame(width: 25, height: 15, alignment: Alignment.center)
+                Button(action: {
+                    audioPlayer.shuffling.toggle()
+                }){
+                    if($audioPlayer.shuffling.wrappedValue){
+                        Image(systemName: "shuffle")
+                            .resizable()
+                            .frame(width: 25, height: 15, alignment: Alignment.center)
+                            .foregroundColor(.blue)
+                    } else {
+                        Image(systemName: "shuffle")
+                            .resizable()
+                            .frame(width: 25, height: 15, alignment: Alignment.center)
+                            .foregroundColor(.gray)
+                    }
+                }
                 Spacer()
-                Image(systemName: "infinity")
-                    .resizable()
-                    .frame(width: 25, height: 15, alignment: Alignment.center)
+                Button(action: {
+                    audioPlayer.infinitePlaying.toggle()
+                }){
+                    if($audioPlayer.infinitePlaying.wrappedValue){
+                        Image(systemName: "infinity")
+                            .resizable()
+                            .frame(width: 25, height: 15, alignment: Alignment.center)
+                            .foregroundColor(.blue)
+                    } else {
+                        Image(systemName: "infinity")
+                            .resizable()
+                            .frame(width: 25, height: 15, alignment: Alignment.center)
+                            .foregroundColor(.gray)
+                    }
+                }
                 Spacer()
             }
             Spacer()

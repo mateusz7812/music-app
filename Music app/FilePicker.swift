@@ -11,6 +11,7 @@ struct FilePicker: View {
     @Binding var path: String
     @State var filename = "Filename"
     @State var showFileChooser = false
+    var onPickFunc: (() -> Void)? = {}
 
      var body: some View {
        HStack {
@@ -24,6 +25,7 @@ struct FilePicker: View {
                     path = url.path
                     print("url : \(url)")
                     print("path : \(path)")
+                    onPickFunc!()
                 },
                 onDismiss: {
                     print("dismiss")
@@ -38,6 +40,6 @@ struct FilePicker: View {
 
 struct FilePicker_Previews: PreviewProvider {
     static var previews: some View {
-        FilePicker(path: Binding.constant(""))
+        FilePicker(path: Binding.constant(""), onPickFunc:{})
     }
 }

@@ -8,27 +8,28 @@
 import SwiftUI
 
 struct SongElementView: View {
-    var name: String
-    var author: String
-    var duration: String
+    var song: Song
 
     var body: some View {
         HStack{
-            Image("sample")
+            SavedImage.loadIfExists(imageName: song.album?.artworkPath)
                 .resizable()
                 .frame(width: 35, height: 35)
-            VStack{
-                Text(name)
-                Text(author)
+            VStack(alignment: .leading){
+                Text(song.name)
+                    .font(.system(size: 14))
+                Text(song.author)
+                    .font(.system(size: 13))
             }
             Spacer()
-            Text(duration)
+            Text(Duration.from(song.duration).toString)
+                .font(.system(size: 14))
         }
     }
 }
 
 struct SongView_Previews: PreviewProvider {
     static var previews: some View {
-        SongElementView(name: "Song name", author: "Song author", duration: "3:30")
+        SongElementView(song: Song.data[0])
     }
 }

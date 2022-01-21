@@ -21,23 +21,23 @@ struct SongsView: View {
     
     var body: some View {
         ZStack{
-            VStack{
-                TabView{
+            VStack(spacing: 0){
                     List{
                         ForEach(songs, id: \.name){ song in
-                            SongElementView(song: song)
-                                .onTapGesture(){
-                                    player.set(song: song)
-                                    player.play()
-                                    player.set(songs: songs)
-                                }
-                                .onLongPressGesture(){
-                                    songToDelete = song
-                                }
+                            Button(action: {}){
+                                SongElementView(song: song)
+                            }
+                            .onTapGesture(){
+                                player.set(song: song)
+                                player.play()
+                                player.set(songs: songs)
+                            }
+                            .onLongPressGesture(){
+                                songToDelete = song
+                            }
+                            .accessibility(identifier: "\(song.name)_button")
                         }
                     }
-                }
-                .tabViewStyle(PageTabViewStyle())
                 PlayerBarView(player: self.player)
             }.background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.gray/*@END_MENU_TOKEN@*/)
             .navigationTitle("Songs")
@@ -56,18 +56,23 @@ struct SongsView: View {
                     }),
                     secondaryButton: .cancel(Text("Cancel"))
                 )
+                
             })
             .onAppear(perform:{
                 songs = dbCon.getSongs()
             })
+            .navigationViewStyle(StackNavigationViewStyle())
             
             HalfASheet(isPresented: $showingSheet, title: "Add song"){
                 VStack{
                     List{
                         Section{
                             FilePicker(path: $path)
+                                .accessibility(identifier: "file_picker")
                             TextField("Title", text: $newSongTitle)
+                                .accessibility(identifier: "title_field")
                             TextField("Author", text: $newSongAuthor)
+                                .accessibility(identifier: "author_field")
                         }
                     }
                     .padding(.top, 10.0)
@@ -85,9 +90,10 @@ struct SongsView: View {
                             songs = dbCon.getSongs()
                         }
                     }
+                    .accessibility(identifier: "add_song_button")
                 }
             }
-            .height(.proportional(0.55))
+            .height(.fixed(250))
             .backgroundColor(UIColor.systemGroupedBackground)
         }
     }

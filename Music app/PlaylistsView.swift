@@ -18,8 +18,7 @@ struct PlaylistsView: View {
     
     var body: some View {
         ZStack{
-        VStack{
-            TabView{
+        VStack(spacing: 0){
                 List{
                     ForEach(playlists, id: \.name){ playlist in
                         NavigationLink(destination:
@@ -34,8 +33,6 @@ struct PlaylistsView: View {
                         }
                     }
                 }
-            }
-            .tabViewStyle(PageTabViewStyle())
             PlayerBarView(player: self.player)
         }.background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.gray/*@END_MENU_TOKEN@*/)
         .navigationTitle("Playlists")

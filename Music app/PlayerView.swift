@@ -23,7 +23,7 @@ struct PlayerView: View {
     
     var body: some View {
         VStack{
-            Image("sample")
+            SavedImage.loadIfExists(imageName: audioPlayer.currentSong.album?.artworkPath)
                 .resizable()
                 .scaledToFit()
                 .padding(10)

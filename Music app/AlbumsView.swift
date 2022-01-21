@@ -53,8 +53,7 @@ struct AlbumsView: View {
     
     var body: some View {
         ZStack{
-        VStack{
-            TabView{
+        VStack(spacing: 0){
                 List{
                     ForEach(albums, id: \.name){ album in
                         NavigationLink(destination:
@@ -69,8 +68,6 @@ struct AlbumsView: View {
                         }
                     }
                 }
-            }
-            .tabViewStyle(PageTabViewStyle())
             Spacer()
             PlayerBarView(player: self.player)
             

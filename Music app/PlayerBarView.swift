@@ -13,17 +13,10 @@ struct PlayerBarView: View {
     @State private var showingSheet = false
     var body: some View {
         HStack{
-            if(player.currentSong.album?.artworkPath != nil){
-                SavedImage.load(imageName: player.currentSong.album!.artworkPath!)
+            SavedImage.loadIfExists(imageName: player.currentSong.album?.artworkPath)
                     .resizable()
                     .frame(width: 50, height: 50)
                     .padding(5)
-            } else {
-                Image("sample")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .padding(5)
-            }
             VStack(alignment: .leading){
                 Text($player.currentSong.name.wrappedValue)
                     .font(.system(size: 16))
@@ -40,6 +33,7 @@ struct PlayerBarView: View {
                         .resizable()
                         .frame(width: 17, height: 17, alignment: Alignment.center)
                 }
+                .accessibility(identifier: "play_button")
             } else {
                 Button(action: {
                     self.player.pause()
@@ -48,6 +42,7 @@ struct PlayerBarView: View {
                         .resizable()
                         .frame(width: 17, height: 17, alignment: Alignment.center)
                 }
+                .accessibility(identifier: "pause_button")
             }
             
             Button(action: {

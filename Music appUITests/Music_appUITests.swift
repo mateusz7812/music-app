@@ -7,6 +7,8 @@
 
 import XCTest
 
+import SwiftUI
+
 class Music_appUITests: XCTestCase {
 
     override func setUpWithError() throws {
@@ -22,13 +24,52 @@ class Music_appUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testPlaySong() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        app.buttons["Songs"].tap()
+        
+        XCTAssertTrue(app.buttons["play_button"].exists)
+        XCTAssertFalse(app.buttons["pause_button"].exists)
+        
+        app.buttons["Believer_button"].tap()
+        sleep(3)
+        
+        XCTAssertFalse(app.buttons["play_button"].exists)
+        XCTAssertTrue(app.buttons["pause_button"].exists)
+        
+        sleep(1)
+        app.buttons["pause_button"].tap();
+        sleep(2)
+        
+        XCTAssertTrue(app.buttons["play_button"].exists)
+        XCTAssertFalse(app.buttons["pause_button"].exists)
+    }
+    
+    func testAddSong() throws {
+        let app = XCUIApplication()
+        app.launch()
+        let number = Int.random(in: 10...99)
+        app.buttons["Songs"].tap()
+        app.navigationBars.children(matching: .button).element(boundBy: 1).tap()
+        app.buttons["file_picker"].tap()
+        app.cells.firstMatch.tap()
+        sleep(2)
+        app.textFields["title_field"].tap()
+        app.textFields["title_field"].typeText("test\(number)")
+        app.textFields["author_field"].tap()
+        app.textFields["author_field"].typeText("test\n")
+        app.buttons["add_song_button"].tap()
+        app.swipeUp()
+        sleep(2)
+        XCTAssertTrue(app.buttons["test\(number)_button"].exists)
+        app.buttons["test\(number)_button"].press(forDuration: 3)
+        sleep(5)
+        app.buttons["Delete"].tap()
+        sleep(3)
+        XCTAssertFalse(app.buttons["test\(number)_button"].exists)
     }
 
     func testLaunchPerformance() throws {
@@ -37,6 +78,7 @@ class Music_appUITests: XCTestCase {
             measure(metrics: [XCTApplicationLaunchMetric()]) {
                 XCUIApplication().launch()
             }
+            
         }
     }
 }

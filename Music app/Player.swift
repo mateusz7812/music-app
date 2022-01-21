@@ -36,11 +36,15 @@ class Player: ObservableObject {
         set(song: currentSong)
     }
     
+    func getAVPlayer(path: String) -> AVPlayer{
+        return AVPlayer(url: URL(fileURLWithPath: path))
+    }
+    
     func set(song: Song){
         pause()
         lastSongHolder = LastSongHolder(last_holder: lastSongHolder, last_song: currentSong)
         currentSong = song
-        avPlayer = AVPlayer(url: URL(fileURLWithPath: song.path))
+        avPlayer = getAVPlayer(path: song.path)
         isPlaying = false
         
         let duration : CMTime = self.avPlayer!.currentItem!.asset.duration

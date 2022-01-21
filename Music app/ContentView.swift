@@ -23,7 +23,7 @@ struct ContentView: View {
                     }
                     NavigationLink(destination: SongsView(player: self.$player, dbCon: self.$dbCon)){
                         Text("Songs")
-                    }
+                    }.accessibilityIdentifier("songs")
                 }
             }
             .tabViewStyle(PageTabViewStyle())
@@ -35,9 +35,7 @@ struct ContentView: View {
         }
         .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(hue: 1.0, saturation: 1.0, brightness: 0.001, opacity: 0.105)/*@END_MENU_TOKEN@*/)
         .navigationTitle("Menu")
-        .onAppear(perform: {
-            UIScrollView.appearance().bounces = false
-        })
+        .accessibilityLabel("contentView")
     }
 }
 
